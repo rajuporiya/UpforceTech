@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
 import {
@@ -18,6 +18,7 @@ import {
   MenuItem,
   InputLabel,
   FormControl,
+  SelectChangeEvent, 
 } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -92,9 +93,8 @@ const Posts = () => {
     }
   };
 
-
-  const handleSortChange = (e: ChangeEvent<{ value: any }>) => {
-    setSortOrder(e.target.value as string);
+  const handleSortChange = (e: SelectChangeEvent<string>) => {
+    setSortOrder(e.target.value);
   };
 
   const handleCreatePost = async (e: FormEvent) => {
@@ -126,8 +126,6 @@ const Posts = () => {
       setLoading(false);
     }
   };
-
-
 
   const handleEditPost = (post: Post) => {
     setFormData({ title: post.title, body: post.body, tags: post.tags.join(",") });
@@ -162,7 +160,6 @@ const Posts = () => {
       }
     }
   };
-
 
   const handleDeletePost = async (id: number) => {
     setLoading(true);
